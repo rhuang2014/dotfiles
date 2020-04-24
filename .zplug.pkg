@@ -23,9 +23,6 @@ zplug "junegunn/fzf",       use:"shell/*.zsh", as:plugin
 # https://github.com/github/hub/tree/master/etc
 zplug "github/hub",         use:"etc/"
 
-# https://github.com/rhuang2014/gpg-agent
-zplug "rhuang2014/gpg-agent", use:"*.zsh", as:plugin
-
 # PYENV
 # https://github.com/pyenv/pyenv
 zplug "pyenv/pyenv",        as:command, use:"bin/*"
@@ -72,6 +69,11 @@ zplug "zsh-users/zsh-history-substring-search", defer:3, on:"zsh-users/zsh-synta
 
 # https://github.com/gpakosz/.tmux
 zplug "gpakosz/.tmux", if:"(( ${+commands[tmux]} ))"
+
+# https://github.com/rhuang2014/gpg-agent
+zplug "rhuang2014/gpg-agent",   use:"*.zsh", as:plugin, defer:3
+# https://github.com/rhuang2014/brew
+zplug "rhuang2014/brew",        use:"*.zsh", as:plugin, defer:3
 
 # local plugins
 #zplug "~/.dotfiles/zplug/brew", use:"*.zsh", from:local, as:plugin, if:"(( $+commands[brew] ))"
