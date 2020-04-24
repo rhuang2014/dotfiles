@@ -71,7 +71,7 @@ zplug "zsh-users/zsh-history-substring-search", defer:3, on:"zsh-users/zsh-synta
 zplug "gpakosz/.tmux", if:"(( ${+commands[tmux]} ))"
 
 # https://github.com/rhuang2014/gpg-agent
-zplug "rhuang2014/gpg-agent",   use:"*.zsh", as:plugin, defer:3
+zplug "rhuang2014/gpg-agent",   use:"*.zsh", as:plugin
 # https://github.com/rhuang2014/brew
 zplug "rhuang2014/brew",        use:"*.zsh", as:plugin, defer:3
 
