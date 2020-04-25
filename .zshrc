@@ -33,5 +33,5 @@ if [[ -o interactive ]] && [[ -o zle ]]; then
     [[ -f "${HOME}/.dotfiles/.zplugrc" ]] && source "${HOME}/.dotfiles/.zplugrc"
     local -a compaudits
     compaudits=($(compaudit 2>/dev/null))
-    (( ${#compaudits} > 0 )) && chmod g-w ${compaudits}
+    [[ -z "${compaudits}" ]] || chmod g-w ${compaudits}
 fi
