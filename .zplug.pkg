@@ -8,7 +8,8 @@
     #zplug "nojhan/liquidprompt", use:liquidprompt, from:github, as:theme
 
 # https://github.com/denysdovhan/spaceship-prompt
-(( ${+commands[sw_vers]} )) && [[ $(sw_vers -productVersion) =~ '10.15' ]] &&\
+(( ${+commands[sw_vers]} )) && [[ $(sw_vers -productVersion) =~ '10.13' ]] ||\
+    [[ ${(L)$(uname -s)} == 'linux' ]] &&\
     zplug "denysdovhan/spaceship-prompt", use:"spaceship.zsh", from:github, as:theme
 
 # https://github.com/trapd00r/LS_COLORS
