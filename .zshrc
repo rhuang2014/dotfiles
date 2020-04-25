@@ -31,5 +31,7 @@ if [[ -o interactive ]] && [[ -o zle ]]; then
     # source plugins and add commands to the PATH
     (( $debug )) && zplug load --verbose || zplug load
     [[ -f "${HOME}/.dotfiles/.zplugrc" ]] && source "${HOME}/.dotfiles/.zplugrc"
-    compaudit | xargs chmod g-w
+    local -a compaudits
+    compaudits=($(compaudit 2>/dev/null))
+    (( ${#compaudits} > 0 )) && chmod g-w ${compaudits}
 fi
