@@ -1,0 +1,14 @@
+# vim: et sw=4 ts=4 ft=zsh
+
+if (( $+commands[ssh] )); then
+    SSH_CONFIG="${HOME}/.ssh/config"
+    alias ssh="ssh -F ${SSH_CONFIG}"
+    if alias s &>/dev/null; then unalias s && alias s='ssh'; else alias s='ssh'; fi
+fi
+if (( $+commands[vim] )); then
+    alias vim-plug-update='vim +PlugClean! +PlugUpdate +PlugStatus +qall'
+    alias vim-plug-forceupdate='vim +PlugClean! +PlugUpdate! +PlugStatus +qall'
+fi
+if (( $+commands[git] )); then
+    alias g='git'
+fi

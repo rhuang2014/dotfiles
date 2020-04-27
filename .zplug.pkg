@@ -1,16 +1,19 @@
 # vim: et sw=4 ts=4 ft=zsh
 # MacOSX 10.10.x
-(( ${+commands[sw_vers]} )) && [[ $(sw_vers -productVersion) =~ '10.10' ]] &&\
-    zplug "mafredri/zsh-async", from:github, use:"async.zsh" &&\
-    # https://github.com/sindresorhus/pure
-    zplug "sindresorhus/pure", use:"pure.zsh", from:github, as:theme, on:"mafredri/zsh-async"
-    # https://github.com/nojhan/liquidprompt
-    #zplug "nojhan/liquidprompt", use:liquidprompt, from:github, as:theme
+#(( ${+commands[sw_vers]} )) && [[ $(sw_vers -productVersion) =~ '10.10' ]] &&\
+#    #zplug "mafredri/zsh-async", from:github, use:"async.zsh" &&\
+#    # https://github.com/sindresorhus/pure
+#    #zplug "sindresorhus/pure", use:"pure.zsh", from:github, as:theme, on:"mafredri/zsh-async"
+#    # https://github.com/nojhan/liquidprompt
+#    zplug "nojhan/liquidprompt", use:liquidprompt, from:github, as:theme
+#
+# https://github.com/denysdovhan/spaceship-prompt
+#(( ${+commands[sw_vers]} )) && [[ $(sw_vers -productVersion) =~ '10.[1-9][3-9]' ]] ||\
+#    [[ ${(L)$(uname -s)} == 'linux' ]] &&\
+#    zplug "denysdovhan/spaceship-prompt", use:"spaceship.zsh", from:github, as:theme
 
 # https://github.com/denysdovhan/spaceship-prompt
-(( ${+commands[sw_vers]} )) && [[ $(sw_vers -productVersion) =~ '10.[1-9][3-9]' ]] ||\
-    [[ ${(L)$(uname -s)} == 'linux' ]] &&\
-    zplug "denysdovhan/spaceship-prompt", use:"spaceship.zsh", from:github, as:theme
+zplug "denysdovhan/spaceship-prompt", use:"spaceship.zsh", from:github, as:theme
 
 # https://github.com/trapd00r/LS_COLORS
 zplug "trapd00r/LS_COLORS"
