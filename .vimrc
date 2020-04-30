@@ -12,7 +12,7 @@ if has("unix")
     endif
     if s:uname == "Darwin\n"
         if empty(glob('/usr/local/bin/cmake'))
-            silent !brew cask install cmake
+            silent !brew install cmake
         endif
     endif
 endif

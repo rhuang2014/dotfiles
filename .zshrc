@@ -9,6 +9,7 @@ if [[ -o interactive ]] && [[ -o zle ]]; then
     declare -A ZINIT
     ZINIT[HOME_DIR]="${HOME}/.zinit"
     ZINIT[BIN_DIR]="${ZINIT[HOME_DIR]}/bin"
+    ZINIT[OPTIMIZE_OUT_DISK_ACCESSES]=1
     if ! test -d "${ZINIT[HOME_DIR]}"; then
         mkdir "${ZINIT[HOME_DIR]}" && chmod go-rwX "${ZINIT[HOME_DIR]}"
         if command -v git >/dev/null 2>&1; then
