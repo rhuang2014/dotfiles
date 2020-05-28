@@ -2,6 +2,11 @@
 # zinit plugins
 # https://unix.stackexchange.com/questions/214657/what-does-zstyle-do
 #
+# https://github.com/zdharma/zinit#order-of-execution
+# Order of execution of related Ice-mods: atinit -> atpull! -> make'!!' -> mv
+# -> cp -> make! -> atclone/atpull -> make -> (plugin script loading) -> src ->
+# multisrc -> atload.
+
 zi ice lucid depth"1" multisrc="~/.dotfiles/.functions/*.zsh" pick"/dev/null"; \
     zi light ~/.dotfiles/.functions
 zi snippet ~/.dotfiles/.aliases
@@ -63,7 +68,7 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 zi ice lucid atclone"dircolors -b LS_COLORS > clrs.zsh" \
-    atpull'%atclone' pick"clrs.zsh" nocompile'!' \
+    atpull'%atclone' pick"clrs.zsh" \
     atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'; \
     zinit light trapd00r/LS_COLORS
 zi ice lucid as"null" has"kubectl" atclone'kubectl completion zsh > kbecmpl.zsh' \
@@ -78,26 +83,26 @@ zi ice lucid from"gh-r" as"program" \
     --border --inline-info --color=dark,bg+:235,hl+:10,pointer:5'"; \
     zi light junegunn/fzf-bin
 zi ice lucid as"program" pick"bin/fzf-tmux" depth"1" \
-    multisrc='shell/{completion,key-bindings}.zsh' nocompile'!'; \
+    multisrc='shell/{completion,key-bindings}.zsh'; \
     zi light junegunn/fzf
 zi ice lucid as"program" pick"bin/git-dsf"; \
     zi light zdharma/zsh-diff-so-fancy
-zi ice lucid as'program' pick'z.sh' src'z.sh' nocompile'!'; \
+zi ice lucid as'program' src'z.sh' reset'!'; \
     zi light rupa/z
-zi ice lucid as"program" pick"bin/rbenv-doctor" nocompile'!'; \
+zi ice lucid as"program" pick"bin/rbenv-doctor"; \
     zi light rbenv/rbenv-installer
-zi ice lucid as"program" pick"bin/*" nocompile'!'; \
+zi ice lucid as"program" pick"bin/*"; \
     zi light rbenv/ruby-build
 zi light supercrabtree/k
 zi light rhuang2014/gpg-agent
 zi light rhuang2014/brew
 #zi ice lucid atclone'RBENV_ROOT="$PWD" ./libexec/rbenv init - > zrbenv.zsh' \
 #    atinit'export RBENV_ROOT="$PWD"' atpull"%atclone" \
-#    as'program' pick'bin/rbenv' src"zrbenv.zsh" nocompile; \
+#    as'program' pick'bin/rbenv' src"zrbenv.zsh"; \
 #    zi light rbenv/rbenv
 #zi ice lucid atclone'PYENV_ROOT="$PWD" ./libexec/pyenv init - > zpyenv.zsh' \
 #    atinit'export PYENV_ROOT="$PWD"' atpull"%atclone" \
-#    as'program' pick'bin/pyenv' src"zpyenv.zsh" nocompile; \
+#    as'program' pick'bin/pyenv' src"zpyenv.zsh"; \
 #    zi light pyenv/pyenv
 zi wait lucid for \
     atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
