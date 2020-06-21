@@ -62,7 +62,11 @@ gc() {
     local -a links domain
     local link
     for link ($@); do
-        links=(${(s_:_)${link:s/@/./}})
+        if [[ ${link} =~ '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}:' ]]; then
+            [[ -n ${(M)link:#*:/*} ]] && links=(${(s_@_)${link:s|:/|/|}}) || links=(${(s_@_)${link:s|:|/|}})
+        else
+            links=(${(s_:_)${link:s/@/./}})
+        fi
         if [[ $links[1] =~ '(http|git)' ]]; then
             links=(${(s_/_)${(s_//_)links[2]}})
             links=($links[1] ${(j_/_)links[-2,-1]})
