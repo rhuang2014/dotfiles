@@ -12,3 +12,14 @@ fi
 if (( $+commands[git] )); then
     alias g='git'
 fi
+if (( $+commands[kubectl] )); then
+    export PATH="${PATH}:${HOME}/dev/roger-huang/k8s"
+    alias kubectl='KUBECONFIG=${HOME}/.kube/maps_config kubectl'
+fi
+if (( $+commands[diff-so-fancy] )); then
+    alias fdiff='diff-so-fancy | less --tabs=4 -RFX'
+fi
+if (( $+commands[hub] )); then
+    alias h='hub' && alias g='hub'
+    [[ -s ~/.hub/hub ]] && export HUB_CONFIG=~/.hub/hub
+fi
