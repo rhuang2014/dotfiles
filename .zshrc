@@ -3,6 +3,7 @@
 
 export LC_CTYPE='en_US.UTF-8'
 export LANG='en_US.UTF-8'
+export PATH="${PATH}:${HOME}/dev/roger-huang/sre_zsh"
 if [[ -o interactive ]] && [[ -o zle ]]; then
     case "${(L)$(uname -s)}" in linux) cpu=$(awk '/^processor/ {++n} END {print n+1}' /proc/cpuinfo) ;; esac
     case "${(L)$(uname -s)}" in darwin) cpu=$(sysctl -n hw.ncpu) ;; esac
@@ -24,3 +25,4 @@ if [[ -o interactive ]] && [[ -o zle ]]; then
     compaudits=($(compaudit 2>/dev/null))
     [[ -z "${compaudits}" ]] || chmod g-w ${compaudits}
 fi
+(( $+commands[brew] )) && [[ -d $(brew --prefix)/opt/python@3/bin ]] && path=($(brew --prefix)/opt/python@3/bin "$path[@]")
