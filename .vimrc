@@ -165,14 +165,17 @@ let g:vim_markdown_json_frontmatter = 1
 
 " https://w.wol.ph/2015/02/17/checking-python-version-vim-version-vimrc/
 " Check python3 version if available
-if has("python3")
-    python3 import vim; from sys import version_info as v; vim.command('let python3_version=%d' % (v[0] * 100 + v[1]))
-else
-    let python3_version=0
-endif
-if python3_version >= 360
-    Plug 'psf/black', { 'branch': 'master' }
-endif
+"if has("python3")
+"    python3 import vim; from sys import version_info as v; vim.command('let python3_version=%d' % (v[0] * 100 + v[1]))
+"else
+"    let python3_version=0
+"endif
+"if python3_version >= 360
+"    Plug 'psf/black', { 'branch': 'master' }
+"endif
+"if has("python3")
+"    Plug 'psf/black', { 'branch': 'master' }
+"endif
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -470,7 +473,7 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 " override ba(sh) script with zsh syntax
 autocmd FileType sh setlocal syntax=zsh
 " To run Black on save
-autocmd BufWritePre *.py execute ':Black'
+"autocmd BufWritePre *.py execute ':Black'
 " http://vim.wikia.com/wiki/Forcing_Syntax_Coloring_for_files_with_odd_extensions
 " override a previous filetype detection, but only set a filetype if the
 " filetype was not detected at all:
