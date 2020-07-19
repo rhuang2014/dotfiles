@@ -13,8 +13,10 @@ zi snippet ~/.dotfiles/.aliases
 # https://github.com/gpakosz/.tmux
 zi ice lucid has"tmux" atclone"cp .tmux.conf ~/" atpull'%atclone';\
     zi light gpakosz/.tmux
-zi ice lucid as"completion"; \
-    zi snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
+zi ice lucid has'docker' as"completion" \
+    snippet 'https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker'
+zi ice lucid has'docker-compose' as"completion" \
+    snippet 'https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose'
 # Color output (auto set to 'no' on dumb terminals).
 zstyle ':prezto:*:*' color 'yes'
 # Disable color and theme in dumb terminals.
@@ -96,14 +98,14 @@ zi ice lucid as"program" pick"bin/*"; \
 zi light supercrabtree/k
 zi light rhuang2014/gpg-agent
 zi light rhuang2014/brew
-#zi ice lucid atclone'RBENV_ROOT="$PWD" ./libexec/rbenv init - > zrbenv.zsh' \
-#    atinit'export RBENV_ROOT="$PWD"' atpull"%atclone" \
-#    as'program' pick'bin/rbenv' src"zrbenv.zsh"; \
-#    zi light rbenv/rbenv
-#zi ice lucid atclone'PYENV_ROOT="$PWD" ./libexec/pyenv init - > zpyenv.zsh' \
-#    atinit'export PYENV_ROOT="$PWD"' atpull"%atclone" \
-#    as'program' pick'bin/pyenv' src"zpyenv.zsh"; \
-#    zi light pyenv/pyenv
+zi ice lucid atclone'RBENV_ROOT="$PWD" ./libexec/rbenv init - > zrbenv.zsh' \
+    atinit'export RBENV_ROOT="$PWD"' atpull"%atclone" \
+    as'program' pick'bin/rbenv' src"zrbenv.zsh"; \
+    zi light rbenv/rbenv
+zi ice lucid atclone'PYENV_ROOT="$PWD" ./libexec/pyenv init - > zpyenv.zsh' \
+    atinit'export PYENV_ROOT="$PWD"' atpull"%atclone" \
+    as'program' pick'bin/pyenv' src"zpyenv.zsh"; \
+    zi light pyenv/pyenv
 zi wait lucid for \
     atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
         zdharma/fast-syntax-highlighting \
