@@ -11,7 +11,7 @@ zi ice lucid depth"1" multisrc="~/.dotfiles/.functions/*.zsh" pick"/dev/null"; \
     zi light ~/.dotfiles/.functions
 zi snippet ~/.dotfiles/.aliases
 # https://github.com/gpakosz/.tmux
-zi ice lucid has"tmux" atclone"cp .tmux.conf ~/" atpull'%atclone';\
+zi ice lucid has"tmux" atclone"cat .tmux.conf >! ~/.tmux.conf" atpull'%atclone';\
     zi light gpakosz/.tmux
 zi ice lucid has'docker' as"completion" \
     snippet 'https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker'
