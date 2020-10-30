@@ -13,10 +13,10 @@ zi snippet ~/.dotfiles/.aliases
 # https://github.com/gpakosz/.tmux
 zi ice lucid has"tmux" atclone"cat .tmux.conf >! ~/.tmux.conf" atpull'%atclone';\
     zi light gpakosz/.tmux
-zi ice lucid has'docker' as"completion" \
-    snippet 'https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker'
-zi ice lucid has'docker-compose' as"completion" \
-    snippet 'https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose'
+zi ice lucid has'docker' as"completion"; \
+    zi snippet 'https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker'
+zi ice lucid has'docker-compose' as"completion"; \
+    zi snippet 'https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose'
 # Color output (auto set to 'no' on dumb terminals).
 zstyle ':prezto:*:*' color 'yes'
 # Disable color and theme in dumb terminals.
