@@ -3,7 +3,7 @@
 
 export LC_CTYPE='en_US.UTF-8'
 export LANG='en_US.UTF-8'
-export PATH="${PATH}:${HOME}/dev/roger-huang/sre_zsh"
+[[ -d ~/bin ]] && path+=(~/bin)
 if [[ -o interactive ]] && [[ -o zle ]]; then
     case "${(L)$(uname -s)}" in linux) cpu=$(awk '/^processor/ {++n} END {print n+1}' /proc/cpuinfo) ;; esac
     case "${(L)$(uname -s)}" in darwin) cpu=$(sysctl -n hw.ncpu) ;; esac
